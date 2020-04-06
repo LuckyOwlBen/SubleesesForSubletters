@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule

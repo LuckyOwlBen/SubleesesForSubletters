@@ -14,11 +14,12 @@ interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl:string = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]"
+  APIKey:string = 'AIzaSyCuy5NkP02sVDu0mTzX_e9R5TdZ2zXDTVg';
+  baseUrl:string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIKey}`;
   constructor(private http:HttpClient) { }
 
   signUp(email:string, password:string){
-    this.http.post(this.baseUrl,{
+    return this.http.post(this.baseUrl,{
       email:email,
       password:password,
       returnedSecureToken: true
