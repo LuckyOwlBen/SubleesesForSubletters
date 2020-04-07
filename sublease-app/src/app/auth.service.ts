@@ -17,7 +17,7 @@ interface AuthResponseData {
 export class AuthService {
   // APIKey:string = 'AIzaSyCuy5NkP02sVDu0mTzX_e9R5TdZ2zXDTVg';
   // baseUrl:string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIKey}`;
-  baseUrl:string = "http://localhost:5432/postgres/" 
+  baseUrl:string = "http://localhost:8080/user/register"
   constructor(private http:HttpClient) { }
 
   // signUp(email:string, password:string){
