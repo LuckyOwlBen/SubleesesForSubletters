@@ -20,8 +20,9 @@ export class AuthenticateComponent implements OnInit {
   onSubmit(form:NgForm){
     const email = form.value.email;
     const password = form.value.password;
-    console.log(form.value)
-    this.authService.signUp(email, password).subscribe(
+    const firstName = form.value.firstname;
+    const lastName = form.value.lastname;
+    this.authService.register(email, password, firstName, lastName).subscribe(
       resData => console.log(resData),
       err => console.log(err)
     )
