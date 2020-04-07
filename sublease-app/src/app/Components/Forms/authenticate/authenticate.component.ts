@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../../Models/User/user';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../Services/Auth/auth.service';
 
 @Component({
   selector: 'app-authenticate',
@@ -9,15 +9,15 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./authenticate.component.css']
 })
 export class AuthenticateComponent implements OnInit {
-  user:User;
-  
+  user: User;
 
-  constructor(private authService:AuthService) { }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm){
     const email = form.value.email;
     const password = form.value.password;
     const firstName = form.value.firstname;
