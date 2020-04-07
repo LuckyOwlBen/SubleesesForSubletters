@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../Models/User/user';
+import { RegistrationRequest } from '../../../Models/RegistrationRequest/RegistrationRequest';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../Services/Auth/auth.service';
 
@@ -18,15 +19,16 @@ export class AuthenticateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    const email = form.value.email;
-    const password = form.value.password;
-    const firstName = form.value.firstname;
-    const lastName = form.value.lastname;
-    this.authService.register(email, password, firstName, lastName).subscribe(
+    const request = new RegistrationRequest();
+    request.email = form.value.email;
+    request.setPassword(form.value.password);
+    request.firstName = form.value.firstname;
+    request.lastName = form.value.lastname;
+    this.authService.register(request).subscribe(
       resData => console.log(resData),
       err => console.log(err)
-    )
-    form.reset()
+    );
+    form.reset();
   }
 
 }
