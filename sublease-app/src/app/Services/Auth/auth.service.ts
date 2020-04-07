@@ -32,7 +32,8 @@ export class AuthService {
 
   // }
   register(registrationRequest: RegistrationRequest): Observable<RegistrationResponse> {
-    return this.http.post<RegistrationResponse>(`${this.baseUrl}/users/register`, {
+    console.log(registrationRequest);
+    return this.http.post<RegistrationResponse>(`${this.baseUrl}`, {
       registrationRequest: RegistrationRequest
     });
   }
