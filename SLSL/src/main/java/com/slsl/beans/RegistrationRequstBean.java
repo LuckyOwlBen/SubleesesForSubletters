@@ -32,4 +32,9 @@ public class RegistrationRequstBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "RegistrationRequstBean [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + "]";
+	}
 }
