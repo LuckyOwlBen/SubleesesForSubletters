@@ -3,10 +3,10 @@ package com.slsl.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.slsl.beans.RegistrationRequstBean;
-import com.slsl.beans.RegistrationResponseBean;
 import com.slsl.entities.Password;
 import com.slsl.entities.User;
+import com.slsl.models.RegistrationRequst;
+import com.slsl.models.RegistrationResponse;
 import com.slsl.repository.PasswordRepo;
 import com.slsl.repository.UserRepo;
 
@@ -26,8 +26,8 @@ public class RegistrationService {
 	private UserRepo userRepo;
 	private PasswordRepo passwordRepo;
 
-	public RegistrationResponseBean registerUser(RegistrationRequstBean request) {
-		RegistrationResponseBean response = new RegistrationResponseBean();
+	public RegistrationResponse registerUser(RegistrationRequst request) {
+		RegistrationResponse response = new RegistrationResponse();
 		try {
 			user.setFirstName(request.getFirstName());
 			user.setLastName(request.getLastName());

@@ -1,6 +1,6 @@
-package com.slsl.beans;
+package com.slsl.models;
 
-public class RegistrationResponseBean {
+public class RegistrationResponse {
 	
 	private boolean isSuccess;
 

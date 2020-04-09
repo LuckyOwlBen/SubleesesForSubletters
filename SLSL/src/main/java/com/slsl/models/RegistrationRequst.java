@@ -1,6 +1,6 @@
-package com.slsl.beans;
+package com.slsl.models;
 
-public class RegistrationRequstBean {
+public class RegistrationRequst {
 	
 	private String firstName;
 	private String lastName;
