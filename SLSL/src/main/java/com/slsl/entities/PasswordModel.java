@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="PASSWORD")
-public class Password {
+public class PasswordModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,7 +55,7 @@ public class Password {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Password other = (Password) obj;
+		PasswordModel other = (PasswordModel) obj;
 		if (ID == null) {
 			if (other.ID != null)
 				return false;

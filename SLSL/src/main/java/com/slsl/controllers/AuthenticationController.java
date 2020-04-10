@@ -1,7 +1,6 @@
 package com.slsl.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,21 +36,22 @@ public class AuthenticationController {
 	private JwtUtil jwtUtil;
 
 	@PostMapping(value="/authenticate")
-	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody AuthenticationRequest request) {
+	public AuthenticationResponse registerUser(@RequestBody AuthenticationRequest request) {
 		try {
-				authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword())
-			);
-		}
-		catch (BadCredentialsException e) {
+				UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
+				authenticationManager.authenticate(token);
+		}catch(BadCredentialsException e) {
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 
 
 		final UserDetails userDetails = userService
-				.loadUserByUsername(request.getUserName());
+				.loadUserByUsername(request.getEmail());
 
 		final String jwt = jwtUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		return new AuthenticationResponse(jwt);
 	}
 }

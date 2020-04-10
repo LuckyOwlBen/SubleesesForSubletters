@@ -3,8 +3,8 @@ package com.slsl.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.slsl.entities.Password;
-import com.slsl.entities.User;
+import com.slsl.entities.PasswordModel;
+import com.slsl.entities.UserModel;
 import com.slsl.models.RegistrationRequst;
 import com.slsl.models.RegistrationResponse;
 import com.slsl.repository.PasswordRepo;
@@ -14,15 +14,15 @@ import com.slsl.repository.UserRepo;
 public class RegistrationService {
 	
 	@Autowired
-	public RegistrationService (User user, Password password, UserRepo userRepo, PasswordRepo passwordRepo) {
+	public RegistrationService (UserModel user, PasswordModel password, UserRepo userRepo, PasswordRepo passwordRepo) {
 		this.user = user;
 		this.password = password;
 		this.userRepo = userRepo;
 		this.passwordRepo = passwordRepo;
 	}
 	
-	private User user;
-	private Password password;
+	private UserModel user;
+	private PasswordModel password;
 	private UserRepo userRepo;
 	private PasswordRepo passwordRepo;
 
