@@ -21,8 +21,8 @@ public class RegistrationController {
 	private RegistrationService registrationService;
 	
 	
-	@PostMapping(value="/user/register")
-	public RegistrationResponse registerUser(@RequestBody RegistrationRequst request) {
+	@PostMapping(value="/auth/register")
+	public RegistrationResponse registerUser(@RequestBody RegistrationRequst request) throws Exception {
 		return registrationService.registerUser(request);
 	}
 }

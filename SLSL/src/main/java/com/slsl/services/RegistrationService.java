@@ -20,7 +20,7 @@ public class RegistrationService {
 		this.repo = repo;
 	}
 
-	public RegistrationResponse registerUser(RegistrationRequst request) {
+	public RegistrationResponse registerUser(RegistrationRequst request) throws Exception {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		RegistrationResponse response = new RegistrationResponse();
 		try {

@@ -20,6 +20,10 @@ import com.slsl.util.JwtUtil;
 @RestController
 public class AuthenticationController {
 	
+	private AuthenticationManager authenticationManager;
+	private AuthService userService;
+	private JwtUtil jwtUtil;
+	
 	@Autowired
 	public AuthenticationController(
 			AuthenticationManager authenticationManager, 
@@ -30,12 +34,8 @@ public class AuthenticationController {
 		this.userService = userService;
 		this.jwtUtil = jwtUtil;
 	}
-	
-	private AuthenticationManager authenticationManager;
-	private AuthService userService;
-	private JwtUtil jwtUtil;
 
-	@PostMapping(value="/user/authenticate")
+	@PostMapping(value="/auth/login")
 	public AuthenticationResponse registerUser(@RequestBody AuthenticationRequest request) {
 		UsernamePasswordAuthenticationToken token = null;
 		try {
@@ -48,8 +48,7 @@ public class AuthenticationController {
 		}
 
 
-		final UserDetails userDetails = userService
-				.loadUserByUsername(request.getEmail());
+		final UserDetails userDetails = userService.loadUserByUsername(request.getEmail());
 
 		final String jwt = jwtUtil.generateToken(userDetails);
 

@@ -25,9 +25,13 @@ public class AuthService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        
-		List<UserModel> user = userRepo.findByEmail(username);
-		return new User(user.get(0).getEmail(), user.get(0).getPassword().getPassword(), new ArrayList<>());
-	}
+        try {
+        	List<UserModel> user = userRepo.findByEmail(username);
+        	return new User(user.get(0).getEmail(), user.get(0).getPassword().getPassword(), new ArrayList<>());
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	throw new UsernameNotFoundException(e.getMessage());
+        }
+   }
 
 }
