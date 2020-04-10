@@ -2,10 +2,18 @@
     flex: 1 1 auto;
 }
 
+.sidenav-size {
+    height: 88vh;
+}
+
 .title {
     position: absolute;
     left: 45%;
     margin-left: -50px !important;
     /* 50% of your logo width */
     display: block;
+}
+
+.add-listing {
+    background-color: darkslategrey;
 }
