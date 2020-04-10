@@ -1,43 +1,38 @@
 package com.slsl.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.slsl.entities.PasswordModel;
 import com.slsl.entities.UserModel;
 import com.slsl.models.RegistrationRequst;
 import com.slsl.models.RegistrationResponse;
-import com.slsl.repository.PasswordRepo;
 import com.slsl.repository.UserRepo;
 
 @Service
 public class RegistrationService {
 	
-	@Autowired
-	public RegistrationService (UserModel user, PasswordModel password, UserRepo userRepo, PasswordRepo passwordRepo) {
-		this.user = user;
-		this.password = password;
-		this.userRepo = userRepo;
-		this.passwordRepo = passwordRepo;
-	}
+	private UserRepo repo;
+	private UserModel user = new UserModel();
+	private PasswordModel password = new PasswordModel();
 	
-	private UserModel user;
-	private PasswordModel password;
-	private UserRepo userRepo;
-	private PasswordRepo passwordRepo;
+	public RegistrationService(UserRepo repo) {
+		this.repo = repo;
+	}
 
 	public RegistrationResponse registerUser(RegistrationRequst request) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		RegistrationResponse response = new RegistrationResponse();
 		try {
 			user.setFirstName(request.getFirstName());
 			user.setLastName(request.getLastName());
 			user.setEmail(request.getEmail());
-			password.setPassword(request.getPassword());
+			password.setPassword(encoder.encode(request.getPassword()));
 			user.setPassword(password);
-			userRepo.save(user);
-			passwordRepo.save(password);
+			repo.save(user);
 			response.setSuccess(true);
 		} catch(Exception e) {
+			e.printStackTrace();
 			response.setSuccess(false);
 		}
 		return response;
