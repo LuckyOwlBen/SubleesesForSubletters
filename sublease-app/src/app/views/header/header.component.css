@@ -1,3 +1,11 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+.title {
+    position: absolute;
+    left: 45%;
+    margin-left: -50px !important;
+    /* 50% of your logo width */
+    display: block;
+}
