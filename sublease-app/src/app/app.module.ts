@@ -6,11 +6,18 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthenticateComponent } from './Components/Forms/authenticate/authenticate.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomePageComponent } from './home-page/home-page.component';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    HomePageComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     MaterialModule,
@@ -18,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

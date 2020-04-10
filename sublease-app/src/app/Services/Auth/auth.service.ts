@@ -11,14 +11,16 @@ interface AuthResponseData {
   refreshToken: string;
   expiresIn: string;
   localId: string;
+  registered?:boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // APIKey:string = 'AIzaSyCuy5NkP02sVDu0mTzX_e9R5TdZ2zXDTVg';
-  // baseUrl:string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIKey}`;
+  APIKey:string = 'AIzaSyCuy5NkP02sVDu0mTzX_e9R5TdZ2zXDTVg';
+  FBbaseUrl:string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIKey}`;
+  
   baseUrl = 'http://localhost:8080/user/register';
   constructor(private http: HttpClient) { }
 
@@ -31,6 +33,18 @@ export class AuthService {
   //   );
 
   // }
+  login(email:string, password:string){
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.APIKey}`,
+    {
+      email:email,
+      password:password,
+      returnedSecureToken: true
+    }
+    )
+
+
+  }
+
   register(registrationRequest: RegistrationRequest): Observable<RegistrationResponse> {
     return this.http.post<RegistrationResponse>(this.baseUrl, registrationRequest);
   }
