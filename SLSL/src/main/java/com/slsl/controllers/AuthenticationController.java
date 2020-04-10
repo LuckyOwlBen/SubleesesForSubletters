@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.slsl.models.AuthenticationRequest;
 import com.slsl.models.AuthenticationResponse;
-import com.slsl.services.UserService;
+import com.slsl.services.AuthService;
 import com.slsl.util.JwtUtil;
 
 
@@ -24,7 +24,7 @@ public class AuthenticationController {
 	@Autowired
 	public AuthenticationController(
 			AuthenticationManager authenticationManager, 
-			UserService userService,
+			AuthService userService,
 			JwtUtil jwtUtil
 		) {
 		this.authenticationManager = authenticationManager;
@@ -33,13 +33,13 @@ public class AuthenticationController {
 	}
 	
 	private AuthenticationManager authenticationManager;
-	private UserService userService;
+	private AuthService userService;
 	private JwtUtil jwtUtil;
 
-	@PostMapping(value="/user/register")
+	@PostMapping(value="/authenticate")
 	public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody AuthenticationRequest request) {
 		try {
-			authenticationManager.authenticate(
+				authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword())
 			);
 		}
