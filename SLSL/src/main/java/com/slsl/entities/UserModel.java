@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="USERS")
-public class User {
+public class UserModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,7 @@ public class User {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="PASSWORD", referencedColumnName="ID")
-	private Password password;
+	private PasswordModel password;
 	
 	public Long getId() {
 		return id;
@@ -67,11 +67,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Password getPassword() {
+	public PasswordModel getPassword() {
 		return password;
 	}
 
-	public void setPassword(Password password) {
+	public void setPassword(PasswordModel password) {
 		this.password = password;
 	}
 	@Override
@@ -93,7 +93,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserModel other = (UserModel) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
