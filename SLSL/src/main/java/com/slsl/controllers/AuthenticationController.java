@@ -35,13 +35,14 @@ public class AuthenticationController {
 	private AuthService userService;
 	private JwtUtil jwtUtil;
 
-	@PostMapping(value="/authenticate")
+	@PostMapping(value="/user/authenticate")
 	public AuthenticationResponse registerUser(@RequestBody AuthenticationRequest request) {
+		UsernamePasswordAuthenticationToken token = null;
 		try {
-				UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
+				token = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
 				authenticationManager.authenticate(token);
 		}catch(BadCredentialsException e) {
-			
+			e.printStackTrace();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
