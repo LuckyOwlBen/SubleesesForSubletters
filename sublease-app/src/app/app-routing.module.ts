@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule, Router} from '@angular/router';
 import { AuthenticateComponent } from './Components/Forms/authenticate/authenticate.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './Components/home-page/home-page.component';
+import { LoginComponent } from './Components/login/login.component';
 
 
 const routes: Routes = [
