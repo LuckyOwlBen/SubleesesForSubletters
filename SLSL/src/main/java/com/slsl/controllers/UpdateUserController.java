@@ -21,7 +21,7 @@ public class UpdateUserController {
 		this.updateUserService = updateUserService;
 	}
 	
-	@PostMapping(value="user/update")
+	@PostMapping(value="/user/update")
 	public UserUpdateResponse updateUser(@RequestBody UserUpdateRequest request) {
 		
 		return updateUserService.updateUserProfile(request);
