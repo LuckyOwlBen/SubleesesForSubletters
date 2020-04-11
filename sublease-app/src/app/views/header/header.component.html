@@ -7,16 +7,15 @@
         </a>
         <span class="spacer"></span>
         <a routerLink="/register" mat-button>Register</a>/<a routerLink="/login" mat-button>Login</a>
-        <button class="add-listing" mat-stroked-button>Add Listing</button>
+        <a class="add-listing" mat-stroked-button>Add Listing</a>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container class="snav-container">
     <mat-sidenav #sidenav>
         <mat-nav-list>
-            <a mat-list-item routerLink="/home">View Listings</a>
-            <a mat-list-item routerLink="/home">Create Listing</a>
-            <a mat-list-item routerLink="/home">Edit Listings</a>
-            <a mat-list-item routerLink="/home">Make me a Sandwich</a>
+            <a mat-list-item routerLink="/home" (click)="sidenav.close()">View Listings</a>
+            <a mat-list-item routerLink="/home" (click)="sidenav.close()">Edit Listings</a>
+            <a mat-list-item routerLink="/home" (click)="sidenav.close()">Make me a Sandwich</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
