@@ -2,6 +2,14 @@
     flex: 1 1 auto;
 }
 
+.snav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .sidenav-size {
     height: 88vh;
 }
