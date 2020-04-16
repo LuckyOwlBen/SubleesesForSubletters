@@ -24,7 +24,7 @@ export class AuthenticateComponent implements OnInit {
     request.setPassword(form.value.password);
     request.firstName = form.value.firstname;
     request.lastName = form.value.lastname;
-    this.authService.register(request).subscribe(
+    this.authService.googleRegister(request).subscribe(
       resData => console.log(resData),
       err => console.log(err)
     );

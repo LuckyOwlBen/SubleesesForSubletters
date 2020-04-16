@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthenticateComponent } from './Components/Forms/authenticate/authenticate.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginComponent } from './Components/forms/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './views/header/header.component';
 
