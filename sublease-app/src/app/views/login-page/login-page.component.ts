@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';  // must include ViewChild to prevent static view
 import { AuthService } from '../../Services/Auth/auth.service';
 import { Router } from '@angular/router';
 import { GoogleAuthRequest } from '../../Models/GoogleAuthRequest/GoogleAuthRequest';
-import { NgForm } from '@angular/forms';
+import { LoginRequest } from '../../Models/LoginRequest/LoginRequest';
+import { NgForm } from '@angular/forms';    // must include to make forms work
 
 @Component({
   selector: 'app-login-page',
@@ -16,8 +17,12 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(request: GoogleAuthRequest) {
-    this.as.googleLogin(request).subscribe(
+  login(request: LoginRequest) {
+    const googleRequest = new GoogleAuthRequest();
+    googleRequest.email = request.email;
+    googleRequest.password = request.password;
+    googleRequest.returnedSecureToken = true;
+    this.as.googleLogin(googleRequest).subscribe(
       resp  => {
         console.log(resp);
         if (resp.registered) {

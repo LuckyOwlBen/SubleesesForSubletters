@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm, FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { GoogleAuthRequest } from '../../../Models/GoogleAuthRequest/GoogleAuthRequest';
+import { LoginRequest } from '../../../Models/LoginRequest/LoginRequest';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +10,15 @@ import { GoogleAuthRequest } from '../../../Models/GoogleAuthRequest/GoogleAuthR
 export class LoginFormComponent  {
 
   constructor(formsModule: FormsModule, reactiveForms: ReactiveFormsModule) { }
-  @Output() eventEmitter = new EventEmitter<GoogleAuthRequest>();
+  @Output() eventEmitter = new EventEmitter<LoginRequest>();
 
 
   onSubmit(form: NgForm) {
-    const authRequest = new GoogleAuthRequest();
+    const authRequest = new LoginRequest();
     authRequest.email = form.value.email;
     authRequest.password = form.value.password;
     console.log(authRequest);
     this.eventEmitter.next(authRequest);
-    form.
     form.reset();
     return;
   }

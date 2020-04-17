@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './Components/header/header.component';
 import { RegisterPageComponent } from './views/register-page/register-page.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
+import { ApiLoginComponent } from './views/api-login/api-login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginPageComponent } from './views/login-page/login-page.component';
     LoginFormComponent,
     HeaderComponent,
     RegisterPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ApiLoginComponent
   ],
   imports: [
     MaterialModule,
