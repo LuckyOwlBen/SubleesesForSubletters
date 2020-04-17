@@ -1,6 +1,6 @@
 package com.slsl.models;
 
-public class RegistrationRequst {
+public class RegistrationRequest {
 	
 	private String firstName;
 	private String lastName;

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.slsl.models.RegistrationRequst;
+import com.slsl.models.RegistrationRequest;
 import com.slsl.models.RegistrationResponse;
 import com.slsl.services.RegistrationService;
 
@@ -22,7 +22,7 @@ public class RegistrationController {
 	
 	
 	@PostMapping(value="/auth/register")
-	public RegistrationResponse registerUser(@RequestBody RegistrationRequst request) throws Exception {
+	public RegistrationResponse registerUser(@RequestBody RegistrationRequest request) {
 		return registrationService.registerUser(request);
 	}
 }
