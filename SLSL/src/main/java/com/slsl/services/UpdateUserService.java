@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,13 +53,12 @@ public class UpdateUserService {
 	}
 
 	private String updateEmail(String newEmail, String oldEmail) throws Exception {
-		List<UserModel> newResult = userRepo.findByEmail(newEmail);
-		List<UserModel> oldResult = userRepo.findByEmail(oldEmail);
-		if(newResult.size() < 0 && oldResult.size() < 1) {
-			//trying to come up with some kind of way to know if this email belongs to this person
-			//and that there are no other accounts with matching emails in the db before I allow the change...
-		}
-		return updateColumn(newEmail, oldEmail);
+		
+			List<UserModel> duplicates = userRepo.findByEmail(newEmail);
+			if(duplicates.isEmpty()) {
+				updateColumn(newEmail, oldEmail);
+			}
+			throw new NonUniqueObjectException(oldEmail, newEmail);
 	}
 
 	private PasswordModel updatePassword(String newPassword, PasswordModel oldPassword) throws Exception {
