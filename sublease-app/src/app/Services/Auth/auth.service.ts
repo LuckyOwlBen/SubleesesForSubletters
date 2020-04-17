@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegistrationRequest } from '../../Models/RegistrationRequest/RegistrationRequest';
+import { FBRegistrationRequest } from '../../Models/FBRegistrationRequest/FBRegistrationRequest';
 import { RegistrationResponse } from '../../Models/RegistrationResponse/RegistrationResponse';
 import { GoogleAuthRequest } from '../../Models/GoogleAuthRequest/GoogleAuthRequest';
 import { GoogleAuthResponse } from '../../Models/GoogleAuthResponse/GoogleAuthResponse';
@@ -25,11 +25,11 @@ export class AuthService {
   //   );
 
   // }
-  googleLogin(googleAuthRequest: GoogleAuthRequest){
+  googleLogin(googleAuthRequest: GoogleAuthRequest) {
     return this.http.post<GoogleAuthResponse>( this.googleLoginUrl , googleAuthRequest);
   }
 
-  googleRegister(registrationRequest: RegistrationRequest): Observable<RegistrationResponse> {
-    return this.http.post<RegistrationResponse>(this.baseUrl, registrationRequest);
+  googleRegister(registrationRequest: FBRegistrationRequest): Observable<RegistrationResponse> {
+    return this.http.post<RegistrationResponse>(this.FBbaseUrl, registrationRequest);
   }
 }
