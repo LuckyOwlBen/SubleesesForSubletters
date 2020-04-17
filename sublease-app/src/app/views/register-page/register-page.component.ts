@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterFormComponent } from '../../Components/Forms/register-form/register-form.component';
 import { AuthService } from '../../Services/Auth/auth.service';
 import { FBRegistrationRequest } from '../../Models/FBRegistrationRequest/FBRegistrationRequest';
+import { RegistrationRequest } from '../../Models/RegistrationRequest/RegistrationRequest';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -19,11 +20,15 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  register(request: FBRegistrationRequest) {
-    this.authService.googleRegister(request).subscribe(
+  register(request: RegistrationRequest) {
+    const googleRequest = new FBRegistrationRequest();
+    googleRequest.email = request.email;
+    googleRequest.password = request.getPassword();
+    googleRequest.returnedSecureToken = true;
+    this.authService.googleRegister(googleRequest).subscribe(
       resData => {
         console.log(resData);
-        this.router.navigate(['home']);
+        this.router.navigate(['googleLogin']);
       },
       err => console.log(err)
     );

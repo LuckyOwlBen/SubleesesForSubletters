@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../Models/User/user';
-import { FBRegistrationRequest } from '../../../Models/FBRegistrationRequest/FBRegistrationRequest';
+import { RegistrationRequest } from '../../../Models/RegistrationRequest/RegistrationRequest';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,15 +11,17 @@ import { NgForm } from '@angular/forms';
 export class RegisterFormComponent {
 
   user: User;
-  @Output() eventEmitter = new EventEmitter<FBRegistrationRequest>();
+  @Output() eventEmitter = new EventEmitter<RegistrationRequest>();
 
 
   constructor() { }
 
   onSubmit(form: NgForm) {
-    const request = new FBRegistrationRequest();
+    const request = new RegistrationRequest();
+    request.firstName = form.value.firstname;
+    request.lastName = form.value.lastName;
     request.email = form.value.email;
-    request.password = form.value.password;
+    request.setPassword(form.value.password);
     console.log(request);
     this.eventEmitter.next(request);
     form.reset();

@@ -26,5 +26,13 @@ export class ApiLoginPageComponent {
       err => console.log(err)
     );
   }
+
+  loginWithGoogle() {
+    this.router.navigate(['googleLogin']);
+  }
+
+  registerWithApi() {
+    this.router.navigate(['apiRegister']);
+  }
 }
 
