@@ -22,6 +22,7 @@ export class AuthService {
   FBbaseUrl:string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIKey}`;
   
   baseUrl = 'http://localhost:8080/user/register';
+  isLoggedIn:Observable<boolean>;
   constructor(private http: HttpClient) { }
 
   // signUp(email:string, password:string){
@@ -33,6 +34,10 @@ export class AuthService {
   //   );
 
   // }
+  getloginStatus(){
+    //get request
+    return this.isLoggedIn;
+  }
   login(email:string, password:string){
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.APIKey}`,
     {

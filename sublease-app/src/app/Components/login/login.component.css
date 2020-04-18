@@ -1,0 +1,22 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* md-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.signin-content {
+    padding: 60px 1rem;
+}
+
+.full-width-input {
+    width: 100%;
+} */

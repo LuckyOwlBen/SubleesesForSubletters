@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../Services/Auth/auth.service';
 import { Router } from '@angular/router';
-import {MatLabel} from '@angular/material/form-field';
-import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +10,8 @@ import {MatButton} from '@angular/material/button';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private as:AuthService, private router:Router) { }
 
+  constructor(private as:AuthService, private router:Router) { }
   ngOnInit() {
   }
 
