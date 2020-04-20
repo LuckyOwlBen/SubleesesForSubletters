@@ -4,20 +4,28 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AuthenticateComponent } from './Components/Forms/authenticate/authenticate.component';
+import { RegisterFormComponent } from './Components/Forms/register-form/register-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginFormComponent } from './Components/forms/login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './views/header/header.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { RegisterPageComponent } from './views/register-page/register-page.component';
+import { LoginPageComponent } from './views/login-page/login-page.component';
+import { ApiLoginPageComponent } from './views/api-login-page/api-login-page.component';
+import { ApiRegisterPageComponent } from './views/api-register-page/api-register-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticateComponent,
+    RegisterFormComponent,
     HomePageComponent,
-    LoginComponent,
-    HeaderComponent
+    LoginFormComponent,
+    HeaderComponent,
+    RegisterPageComponent,
+    LoginPageComponent,
+    ApiLoginPageComponent,
+    ApiRegisterPageComponent
   ],
   imports: [
     MaterialModule,
@@ -26,7 +34,7 @@ import { HeaderComponent } from './views/header/header.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

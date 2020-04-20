@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {Routes, RouterModule, Router} from '@angular/router';
-import { AuthenticateComponent } from './Components/Forms/authenticate/authenticate.component';
+import { RegisterPageComponent } from './views/register-page/register-page.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { LoginComponent } from './Components/login/login.component';
-
+import { LoginPageComponent } from './views/login-page/login-page.component';
+import { ApiLoginPageComponent } from './views/api-login-page/api-login-page.component';
+import { ApiRegisterPageComponent } from './views/api-register-page/api-register-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', component:LoginComponent},
-  {path: 'register',  component: AuthenticateComponent},
-  {path: 'home', component:HomePageComponent}
+  {path: '', redirectTo: 'apiLogin', pathMatch: 'full'},
+  {path: 'googleLogin', component: LoginPageComponent},
+  {path: 'googleRegister',  component: RegisterPageComponent},
+  {path: 'home', component: HomePageComponent},
+  {path: 'apiLogin', component: ApiLoginPageComponent},
+  {path: 'apiRegister', component: ApiRegisterPageComponent}
 ];
 
 @NgModule({
@@ -18,6 +20,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

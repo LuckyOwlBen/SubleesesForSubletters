@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.slsl.models.UserUpdateRequest;
@@ -22,8 +23,10 @@ public class UpdateUserController {
 	}
 	
 	@PostMapping(value="/user/update")
-	public UserUpdateResponse updateUser(@RequestBody UserUpdateRequest request) {
+	public UserUpdateResponse updateUser(@RequestHeader(value="Authorization") String auth, 
+			@RequestBody UserUpdateRequest request) throws Exception {
 		
-		return updateUserService.updateUserProfile(request);
+		
+		return updateUserService.updateUserProfile(request, auth);
 	}
 }
