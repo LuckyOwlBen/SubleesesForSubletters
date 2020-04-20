@@ -30,12 +30,7 @@ class TestRegistrationService {
 	@InjectMocks
 	private RegistrationService regService;
 
-	@Before(value = "testDuplicateRegistration()")
-	static void setUpBeforeClass() {
-		MockitoAnnotations.initMocks(RegistrationService.class);
-	}
-
-	private RegistrationService createTestSubject() {
+	public RegistrationService createTestSubject() {
 		return regService;
 	}
 
@@ -75,13 +70,16 @@ class TestRegistrationService {
 		RegistrationRequest request = new RegistrationRequest();
 		RegistrationResponse response = regService.registerUser(request);
 		assertFalse(response.getIsSuccess());
-		// Assertions.assertThrows(IllegalArgumentException.class, () ->
-		// {regService.registerUser(request);});
+	}
+	
+	@Before(value = "testDuplicateRegistration()")
+	static void setUpBeforeClass() {
+		MockitoAnnotations.initMocks(RegistrationService.class);
 	}
 
 	@Test
 	void testDuplicateRegistration() {
-		RegistrationService regService = createTestSubject();
+		regService = createTestSubject();
 		RegistrationRequest request = createRequest();
 		when(repo.findByEmail(ArgumentMatchers.any())).thenReturn(createDuplicateUser());
 		RegistrationResponse response = regService.registerUser(request);
