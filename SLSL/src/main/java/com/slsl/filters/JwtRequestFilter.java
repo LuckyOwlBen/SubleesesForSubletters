@@ -15,19 +15,26 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.slsl.services.AuthService;
+import com.slsl.configuration.AuthDetailRetrieval;
 import com.slsl.util.JwtUtil;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private AuthService userDetailsService;
+    private AuthDetailRetrieval retrieval;
 
-    @Autowired
     private JwtUtil jwtUtil;
 
-    @Override
+    @Autowired
+    public JwtRequestFilter(AuthDetailRetrieval retrieval, JwtUtil jwtUtil) {
+		super();
+		this.retrieval = retrieval;
+		this.jwtUtil = jwtUtil;
+	}
+
+
+
+	@Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
@@ -44,7 +51,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = this.retrieval.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
 
