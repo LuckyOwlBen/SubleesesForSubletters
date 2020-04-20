@@ -8,7 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.core.userdetails.UserDetails;
-
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.slsl.configuration.AuthDetailRetrieval;
@@ -33,9 +33,6 @@ public class AuthService {
 		
 	}
 	
-		
-	
-	
 	public AuthenticationResponse login(AuthenticationRequest request) {
 		try {	
 			authenticateUser(request);
@@ -43,6 +40,8 @@ public class AuthService {
 			final String jwt = jwtUtil.generateToken(userDetails);
 			return new AuthenticationResponse(jwt, true);
 		} catch(BadCredentialsException e) {
+			return new AuthenticationResponse(null, false);
+		} catch(UsernameNotFoundException e) {
 			return new AuthenticationResponse(null, false);
 		}
 	}

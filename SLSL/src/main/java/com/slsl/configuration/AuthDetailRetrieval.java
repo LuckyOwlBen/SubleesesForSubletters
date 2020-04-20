@@ -17,23 +17,19 @@ import com.slsl.repository.UserRepo;
 public class AuthDetailRetrieval implements UserDetailsService {
 
 	UserRepo userRepo;
-	
+
 	@Autowired
 	public AuthDetailRetrieval(UserRepo userRepo) {
-		super();
 		this.userRepo = userRepo;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        try {
-        	List<UserModel> user = userRepo.findByEmail(username);
-        	
-        	return new User(user.get(0).getEmail(), user.get(0).getPassword().getPassword(), new ArrayList<>());
-        } catch (Exception e) {
-        	e.printStackTrace();
-        	throw new UsernameNotFoundException(e.getMessage());
-        }
-   }
+
+		List<UserModel> user = userRepo.findByEmail(username);
+
+		return new User(user.get(0).getEmail(), user.get(0).getPassword().getPassword(), new ArrayList<>());
+
+	}
 
 }
