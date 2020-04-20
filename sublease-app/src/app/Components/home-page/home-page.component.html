@@ -1,1 +1,13 @@
-<p>home-page works!</p>
+<section class="hero is-info is-fullheight is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1>Flavor text</h1>
+        </div>
+        <div class="quickSearch">
+            <input type="search" class="quickSearchLookup" placeholder="Search by Location" [formControl]="searchControl">
+            <span>&nbsp;</span>
+            <a mat-raised-button class="search-btn" color="primary">Search</a>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</section>
