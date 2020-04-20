@@ -6,13 +6,13 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.slsl.entities.PasswordModel;
@@ -30,8 +30,9 @@ class TestRegistrationService {
 	@InjectMocks
 	private RegistrationService regService;
 
-	@BeforeAll
+	@Before(value = "testDuplicateRegistration()")
 	static void setUpBeforeClass() {
+		MockitoAnnotations.initMocks(RegistrationService.class);
 	}
 
 	private RegistrationService createTestSubject() {

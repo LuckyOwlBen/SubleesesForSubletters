@@ -36,9 +36,9 @@ public class RegistrationService {
 					password.setPassword(encoder.encode(request.getPassword()));
 					user.setPassword(password);
 					repo.save(user);
+					response.setSuccess(true);
 				}
 			}
-			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
 		}
@@ -51,7 +51,6 @@ public class RegistrationService {
 		if(duplicates.isEmpty()) {
 			result = true;
 		}
-		System.out.println(result);
 		return result;
 	}
 }
