@@ -1,16 +1,38 @@
+/* .homepage-wrapper {
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#mainSearchWrap.mainSearchWrap {
+    z-index: 15;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+} */
+
+#homepage-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* .mainSearchWrap {
+    margin: auto;
+} */
+
 .hero {
     background-image: url('https://static.nationalgeographic.co.uk/files/styles/image_1900/public/tripsofalifetime_AWL_US04507_HR2_WEB.jpg') !important;
     background-size: cover;
     background-position: center center;
 }
 
-.container {
+.inputRapper {
     height: 50vh;
-    text-align: center;
-}
-
-.quickSearch {
-    text-align: center;
+    /*display: inline-block;*/
 }
 
 .quickSearchLookup {

@@ -14,6 +14,9 @@ import { RegisterPageComponent } from './views/register-page/register-page.compo
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { ApiLoginPageComponent } from './views/api-login-page/api-login-page.component';
 import { ApiRegisterPageComponent } from './views/api-register-page/api-register-page.component';
+import { FooterComponent } from './views/footer/footer.component';
+import { ListingDashboardComponent } from './Components/listing-dashboard/listing-dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { ApiRegisterPageComponent } from './views/api-register-page/api-register
     RegisterPageComponent,
     LoginPageComponent,
     ApiLoginPageComponent,
-    ApiRegisterPageComponent
+    ApiRegisterPageComponent,
+    FooterComponent,
+    ListingDashboardComponent
   ],
   imports: [
     MaterialModule,
