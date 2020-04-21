@@ -1,13 +1,35 @@
-<section class="hero is-info is-fullheight is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <h1>Flavor text</h1>
+<div class="homepage-wrapper">
+    <section id="homepage-section" class="hero is-info is-fullheight is-bold">
+        <div class="spacer"></div>
+        <div class="mainSearchWrap" id="mainSearchWrap">
+            <h1 class="mainTitle" id="quickSearchMainTitle">Discover Your New Home</h1>
+            <p id="quickSearchSubTitle">Helping 100 million renters find their perfect home</p>
+            <form class="searchForm">
+                <input type="search" matInput class="quickSearchLookup" placeholder="Search by Location" [formControl]="searchControl">
+                <span>&nbsp;</span>
+                <a mat-raised-button class="search-btn" color="primary">
+                    <span>Search</span></a>
+            </form>
+            <div id="quickSearch" class="quickSearch">
+                <div class="hero-body">
+                    <div class="inputRapper">
+                        <!-- <form class="searchForm">
+                            <input type="search" matInput class="quickSearchLookup" placeholder="Search by Location" [formControl]="searchControl">
+                            <span>&nbsp;</span>
+                            <a mat-raised-button class="search-btn" color="primary">
+                                <span>Search</span></a>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="quickSearch">
-            <input type="search" class="quickSearchLookup" placeholder="Search by Location" [formControl]="searchControl">
-            <span>&nbsp;</span>
-            <a mat-raised-button class="search-btn" color="primary">Search</a>
-        </div>
-    </div>
-    <router-outlet></router-outlet>
-</section>
+        <router-outlet></router-outlet>
+    </section>
+    <br>
+
+    <!--Dashboard Section-->
+    <app-listing-dashboard></app-listing-dashboard>
+
+</div>
+<hr>
+<app-footer></app-footer>

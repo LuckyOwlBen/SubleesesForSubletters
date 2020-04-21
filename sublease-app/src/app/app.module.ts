@@ -10,6 +10,8 @@ import { HomePageComponent } from './Components/home-page/home-page.component';
 import { LoginComponent } from './Components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './views/header/header.component';
+import { FooterComponent } from './views/footer/footer.component';
+import { ListingDashboardComponent } from './Components/listing-dashboard/listing-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HeaderComponent } from './views/header/header.component';
     AuthenticateComponent,
     HomePageComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    ListingDashboardComponent
   ],
   imports: [
     MaterialModule,

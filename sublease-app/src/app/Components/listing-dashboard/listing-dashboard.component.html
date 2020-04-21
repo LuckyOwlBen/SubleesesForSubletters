@@ -1,0 +1,23 @@
+<h3 class="feature-title">Explore Subleasing Apartments Near Me</h3>
+<div class="listing-card-container">
+    <div class="row">
+        <div class="column" *ngFor="let l of listings" style="display: inline-block;">
+            <mat-card class="listing-card">
+                <mat-card-header>
+                    <img [src]="l.imagePath" [alt]="l.name" class="img-responsive" style="max-height: 150px;">
+                </mat-card-header>
+                <br>
+                <mat-card-content>
+                    <h3><strong>{{l.name}} | Irvine</strong></h3>
+
+                    <p>
+                        {{l.description}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="feature-button">
+    <button mat-raised-button color="primary">View More</button>
+</div>
