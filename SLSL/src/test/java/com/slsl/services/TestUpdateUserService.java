@@ -61,13 +61,34 @@ public class TestUpdateUserService {
 	}
 	
 	@Test
-	void updateCurrentUser() {
+	void testUpdateCurrentUser() {
 		updateService = returnTestInstance();
+		UserModel updatedUser = createUser().get(0);
+		updatedUser.setEmail("bacon@mail.com");
+		when(repo.save(ArgumentMatchers.any())).thenReturn(updatedUser);
 		when(jwtUtil.extractUsername(ArgumentMatchers.any())).thenReturn("Test@mail.com");
 		when(repo.findByEmail("bacon@mail.com")).thenReturn(new ArrayList<>());
 		when(repo.findByEmail("Test@mail.com")).thenReturn(createUser());
 		UserUpdateResponse response = updateService.updateUserProfile(generateRequest(), "fakeGoodString");
 		assertTrue(response.isSuccess());
+	}
+	
+	@Test
+	void testBadTokenEmail() {
+		updateService = returnTestInstance();
+		when(jwtUtil.extractUsername(ArgumentMatchers.any())).thenReturn("not@theRightEmail.com");
+		UserUpdateResponse response = updateService.updateUserProfile(generateRequest(), "ThisIsMocked");
+		assertFalse(response.isSuccess());
+		//Assertions.assertThrows(AccessDeniedException.class, () -> {updateService.updateUserProfile(generateRequest(), "thisIsMocked");});
+	}
+	
+	@Test
+	void testBadUserReturn() {
+		updateService = returnTestInstance();
+		when(jwtUtil.extractUsername(ArgumentMatchers.any())).thenReturn("Test@mail.com");
+		when(repo.findByEmail(ArgumentMatchers.any())).thenReturn(new ArrayList<>());
+		UserUpdateResponse response = updateService.updateUserProfile(generateRequest(), "fakeGoodString");
+		assertFalse(response.isSuccess());
 	}
 
 }

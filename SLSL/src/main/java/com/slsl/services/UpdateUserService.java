@@ -44,7 +44,6 @@ public class UpdateUserService {
 				throw new AccessDeniedException(auth);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			response.setSuccess(false);
 			return response;
 		}
@@ -61,11 +60,14 @@ public class UpdateUserService {
 
 	private String updateEmail(String newEmail, String oldEmail) throws NonUniqueObjectException {
 		
+			String result;
 			List<UserModel> duplicates = userRepo.findByEmail(newEmail);
 			if(duplicates.isEmpty()) {
-				updateColumn(newEmail, oldEmail);
+				result = updateColumn(newEmail, oldEmail);
+			} else {
+				throw new NonUniqueObjectException(oldEmail, newEmail);
 			}
-			throw new NonUniqueObjectException(oldEmail, newEmail);
+			return result;
 	}
 
 	private PasswordModel updatePassword(String newPassword, PasswordModel oldPassword) {

@@ -28,7 +28,7 @@ import com.slsl.util.JwtUtil;
 
 @ExtendWith(MockitoExtension.class)
 class TestAuthService {
-//Assertions.assertThrows(UsernameNotFoundException.class, () -> {service.doThing(resoponse)});
+
 	@Mock
 	AuthDetailRetrieval repo;
 
