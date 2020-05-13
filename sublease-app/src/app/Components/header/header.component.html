@@ -6,7 +6,8 @@
             <h1>Company Logo</h1>
         </a>
         <span class="spacer"></span>
-        <a routerLink="/register" mat-button>Register</a>/<a routerLink="/login" mat-button>Login</a>
+        <a routerLink="/register" mat-button>Register</a>
+        <a (click) = 'login()' mat-button>Login</a>
         <a class="add-listing" mat-stroked-button>Add Listing</a>
     </mat-toolbar-row>
 </mat-toolbar>
