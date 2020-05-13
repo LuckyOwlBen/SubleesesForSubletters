@@ -7,7 +7,7 @@ import { ApiLoginPageComponent } from './views/api-login-page/api-login-page.com
 import { ApiRegisterPageComponent } from './views/api-register-page/api-register-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'apiLogin', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'googleLogin', component: LoginPageComponent},
   {path: 'googleRegister',  component: RegisterPageComponent},
   {path: 'home', component: HomePageComponent},
